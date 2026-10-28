@@ -1,0 +1,15 @@
+# Sensitive/runtime artifacts intentionally excluded
+*.gwbk
+*.bak
+*.backup
+*.sqlite
+*.db
+.env
+.env.*
+credentials.json
+flows_cred.json
+users.json
+node_modules/
+__pycache__/
+.DS_Store
+Thumbs.db
