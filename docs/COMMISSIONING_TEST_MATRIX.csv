@@ -1,0 +1,19 @@
+Test ID,Commissioning Test,Acceptance Criteria,Evidence / Actual Result,Status
+CT-01,Factory I/O / Modbus I/O verification,Live Tank A / Flow In reads and Fill / Discharge valve writes respond correctly.,Verified during live Modbus operation at 192.168.0.100:502.,PASS
+CT-02,Startup sequence,Valid START progresses through startup states and reaches RUNNING without active trip.,Repeated runs reached STABILIZING then RUNNING.,PASS
+CT-03,Manual controlled stop,STOP executes controlled shutdown and returns system to STOPPED.,Observed STOPPING_FLOW -> CLOSE_OUTLET -> CLOSE_INLET -> STOPPED.,PASS
+CT-04,Emergency stop,E-STOP immediately latches emergency trip and forces safe state.,E-STOP produced TRIPPED with trip reason E-STOP.,PASS
+CT-05,START rejection during active trip,START must not restart process while a trip / E-STOP is active.,START command issued while TRIPPED; state remained TRIPPED.,PASS
+CT-06,Tank A Low-Low trip,Tank A <= LL setpoint during transfer causes emergency trip.,Tank A reached 0; state changed to TRIPPED; reset succeeded after level recovery.,PASS
+CT-07,Tank B High-High shutdown,"Tank B >= HH requests controlled shutdown, not emergency trip.",Repeatedly verified; HH preempted early tests before model tuning.,PASS
+CT-08,High pressure trip,Pressure >= trip setpoint causes immediate emergency trip and latches.,Functional trip path verified using temporary 5.0 bar commissioning threshold; production value restored to 6.0 bar.,PASS*
+CT-09,Persistent no-flow trip,Loss of effective transfer flow while RUNNING trips after configured persistence delay (~5 s).,Transfer Fault ON at 17:55:53; TRIPPED at 17:55:59 with PERSISTENT NO FLOW.,PASS
+CT-10,Leak warning,Flow imbalance above warning threshold creates warning without premature trip.,Verified by automated commissioning sequence.,PASS
+CT-11,Leak confirmed trip,Persistent flow imbalance + pressure-drop condition causes latched emergency trip.,Verified by automated commissioning sequence after race-condition hardening.,PASS
+CT-12,Blockage detection,Low flow ratio + pressure-drop signature is detected.,Verified; blockage also used to validate high-pressure path.,PASS
+CT-13,Flow sensor fault simulation,Injected outlet-flow sensor bias is visible and detection reacts.,730 -> 474.5 (~65%); imbalance alarms / trip path reacted.,PASS
+CT-14,Pressure sensor fault simulation,Injected pressure sensor bias increases apparent pressure drop and is observable.,Fault produced increased Delta-P while flow remained approximately unchanged.,PASS
+CT-15,RESET rejection with active hazard,RESET must be rejected while the transfer fault remains active.,RESET attempted while TRANSFER fault remained ON; system stayed TRIPPED.,PASS
+CT-16,Safe reset / recovery,"After hazard removal, RESET clears latched trip and returns safe STOPPED state.","Transfer Fault OFF -> RESET -> STOPPED, trip clear, alarms clear.",PASS
+CT-17,Final safe-state acceptance,"Final state must be STOPPED with no trip, alarm, or simulated fault.","18:02:25: STOPPED, TankA=557, TankB=100, Flow=0/0, Pin=1.2, Trip=OFF, Alarms=0, Faults=NONE.",PASS
+CT-18,Valve availability / health rejection,Unavailable valve feedback should block startup / relevant permissive.,Not executed: current Factory I/O scene has no real valve-health feedback; availability is virtual.,NOT EXECUTED
