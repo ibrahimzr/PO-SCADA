@@ -1,0 +1,59 @@
+{
+  "tags": [
+    {
+      "name": "LT-102",
+      "typeId": "AnalogInstrument_UDT",
+      "tagType": "UdtInstance",
+      "parameters": {
+        "TagID": "LT-102",
+        "Description": "Tank B Level",
+        "EU": "unit",
+        "SourceTagPath": "[default]PO_SCADA/01_Process/TankBLevel"
+      }
+    },
+    {
+      "name": "FT-101",
+      "typeId": "AnalogInstrument_UDT",
+      "tagType": "UdtInstance",
+      "parameters": {
+        "TagID": "FT-101",
+        "Description": "Inlet Flow",
+        "EU": "unit",
+        "SourceTagPath": "[default]PO_SCADA/01_Process/FlowIn"
+      }
+    },
+    {
+      "name": "FT-102",
+      "typeId": "AnalogInstrument_UDT",
+      "tagType": "UdtInstance",
+      "parameters": {
+        "TagID": "FT-102",
+        "Description": "Outlet Flow",
+        "EU": "unit",
+        "SourceTagPath": "[default]PO_SCADA/01_Process/FlowOut"
+      }
+    },
+    {
+      "name": "PT-101",
+      "typeId": "AnalogInstrument_UDT",
+      "tagType": "UdtInstance",
+      "parameters": {
+        "TagID": "PT-101",
+        "Description": "Inlet Pressure",
+        "EU": "unit",
+        "SourceTagPath": "[default]PO_SCADA/01_Process/PressureIn"
+      }
+    },
+    {
+      "name": "PT-102",
+      "typeId": "AnalogInstrument_UDT",
+      "tagType": "UdtInstance",
+      "parameters": {
+        "TagID": "PT-102",
+        "Description": "Outlet Pressure",
+        "EU": "unit",
+        "SourceTagPath": "[default]PO_SCADA/01_Process/PressureOut"
+      }
+    }
+  ]
+}
